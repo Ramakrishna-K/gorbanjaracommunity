@@ -14,7 +14,7 @@ if (!process.env.JWT_SECRET) {
 }
 
 // Initialize Firebase Admin
-const serviceAccount = require("../config/serviceAccountKey.json");
+const serviceAccount = require("../config/firebaseAddmine");
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
