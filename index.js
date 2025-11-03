@@ -17,7 +17,17 @@ const donationRoutes = require("./routes/donationRoutes");
 const app = express();
 
 // Middleware
-app.use(cors());
+// app.use(cors());
+// app.use(cors({ origin: "https://gorbanjara-1.vercel.app/" }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",        // for local React testing
+    "https://gorbanjara185.vercel.app/" // for deployed frontend
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
@@ -32,7 +42,9 @@ app.use("/api/donations", donationRoutes);
 
 // Test root route
 app.get("/", (req, res) => res.send("API Running 🚀"));
-
+app.get("/", (req, res) => {
+  res.send("Backend connected with Railway MySQL ✅");
+});
 // Start server
 const PORT = process.env.PORT || 3200;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
