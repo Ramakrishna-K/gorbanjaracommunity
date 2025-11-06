@@ -77,7 +77,7 @@ const app = express();
 
 // ✅ Allowed origins (frontend URLs)
 const allowedOrigins = [
-  "https://gorbanjara04.vercel.app", // your Vercel frontend
+  "https://gorbanjaracommunity1.vercel.app", // your Vercel frontend
   "http://localhost:5173"            // local development
 ];
 
